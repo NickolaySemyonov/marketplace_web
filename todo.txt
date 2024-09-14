@@ -1,0 +1,12 @@
+[ ] header - sticky, tabs
+[ ] cart, localstorage
+[ ] main layout
+[ ] categories sidebar
+[ ] cards - carousel images, goods description, preview
+[ ] dynamic pagination 
+[ ] footer
+[ ] page-up static button
+[ ] chat-bot
+
+--------------
+modal windows for cart and cards
