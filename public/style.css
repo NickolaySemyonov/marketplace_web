@@ -9,3 +9,17 @@
 .card:hover{
     box-shadow: 0pt 0pt 15pt -5pt dodgerblue;
 }
+.pagination{
+    margin: 20pt;
+    justify-content: center;
+}
+.js-pagination-list{
+    margin:0 ; 
+    padding: 0 ;
+    display: flex;
+    flex-direction: row; 
+}
+
+.page-item.active{
+    background-color: dodgerblue;
+}
