@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom CSS -->
     <link type="text/css" rel="stylesheet" href="style.css">
     <title>Main</title>
@@ -24,26 +24,38 @@
       <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
           <div><!--brand and categories button-->
-          <a class="navbar-brand" href="#">OZON</a>
-          <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-            Select category
-          </a>
-        </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-             
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-           
-
-            </ul>
+            <a class="navbar-brand" href="#">OZON</a>
+            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+              Select category
+            </a>
           </div>
+          <!-- Cart button-->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cartModal">
+            <i class="bi bi-cart"></i>
+          </button>
         </div>
       </nav>
+    </div>
+
+    <!-- Cart modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg modal-fullscreen-lg-down">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cartModalLabel">Корзина покупок</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Здесь можно добавить содержимое корзины -->
+            
+            <p>Здесь можно добавить содержимое корзины</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary">Перейти к оплате</button>
+          </div>
+        </div>
+      </div>
     </div>
     
     <!-- Breadcrumbs div on top-->
@@ -62,7 +74,6 @@
         <button class="js-pagination-btn-next btn btn-primary">Next</button>
       </nav>
     </main>
-
 
     <!-- Categories sidebar -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample">

@@ -22,15 +22,16 @@ const paginate = (products) => {
             div.classList.add('col');
         
             div.innerHTML = `
-                    <div class="card h-100">
-                    <img src="${product.photo[0]}" class="card-img-top" alt="...">
+                    <div class="js-prod card h-100">
+                    <img src="${product.photo[0]}" class="js-prod-photo card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">${product.productName}</h5>
-                        <p class="card-text">${product.description}</p>
+                        <h5 class="js-prod-name card-title">${product.productName}</h5>
+                        <p class="js-prod-descr card-text">${product.description}</p>
+                        <p class="js-prod-price card-text">Price: ${product.price}</p>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-primary ">Preview</a>
-                        <a class="btn btn-primary "><img src="images/icons/cart-plus.svg"/></a>
+                        <a class="btn btn-primary">Preview</a>
+                        <a class="js-add-to-cart btn btn-primary"><img src="images/icons/cart-plus.svg"/></a>
                     </div>
                     </div>
                 `;
