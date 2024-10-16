@@ -19,19 +19,17 @@ const cartData = () => {
 
                 const existingItem = cartItems.find(item => item.id === id);
                 
-
-
                 if (existingItem !== undefined) updateCartItemCount(existingItem,existingItem.count+1);
-                else cartItems.push({id:id, count:1, info:productInfo});
-
-                console.log(cartItems);
+                else {
+                    cartItems.push({id:id, count:1, info:productInfo});
+                    updateLS();
+                }
+                //console.log(cartItems);
                 renderProductCart();
             }
         });
 
-
         cart.addEventListener('click',(event)=>{
-            
             if(event.target.classList.contains('cart-item-remove')){
                 const div = event.target.closest('.js-cart-item');
                 const cartItemId = div.querySelector('.cart-item-id').textContent;
@@ -50,8 +48,7 @@ const cartData = () => {
             renderProductCart();
         });
 
-
-    };
+    }
     addProductToCart();
    
     const renderProductInCart = (id, count, productInfo) => {
@@ -78,21 +75,26 @@ const cartData = () => {
               
         `;
         return div;
-    };
+    }
     const renderProductCart = () =>{
+        //Load cart items saved in localstorage
+        const parsed = JSON.parse(localStorage.getItem('cartItems'));
+        cartItems = parsed!==null ? parsed: [];
+
+
         cart.innerHTML=``;
         if(cartItems.length < 1) {cart.innerHTML=`<p>Корзина пуста</p>`; return;}
         cartItems.forEach(prod => {
             cart.append(renderProductInCart(prod.id, prod.count, prod.info));
         });
-        
-    };
+    }
     renderProductCart();
 
     const updateCartItemCount = (cartItem, newCount) => {
         if(newCount >= cartItem.count | newCount > 0) cartItem.count = newCount;
         else deleteItemFromCart(cartItem.id);
-    };
+        updateLS();   
+    }
     const decCartItemCount = (cartItemId) =>{
         const item = cartItems.find(item => item.id === cartItemId);
         updateCartItemCount(item, item.count-1);
@@ -101,11 +103,16 @@ const cartData = () => {
         const item = cartItems.find(item => item.id === cartItemId);
         updateCartItemCount(item, item.count+1);
     }
-
     const deleteItemFromCart = (removedId) => {
         cartItems = cartItems.filter(item => item.id !== removedId); 
-        console.log(cartItems);
-    };
+        updateLS();
+    }
+
+    const updateLS = () => {
+        //upd localstorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
 };
 
 export {
