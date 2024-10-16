@@ -27,6 +27,7 @@
 .js-cart-item {
     padding: 10px 0;
     min-height: 100px;
+    justify-content: space-between;
 }
   
 .cart-item img {
@@ -35,7 +36,10 @@
 }
   
 .cart-item-remove {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+    
+    
+    height: 40pt;
+    width: 40pt;
+    padding: 0;
+   
 }

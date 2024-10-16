@@ -32,8 +32,8 @@ const paginate = (products) => {
                         <p class="js-prod-price card-text">Price: ${attrs.price}\$</p>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-primary">Preview</a>
-                        <a class="js-add-to-cart btn btn-primary"><img src="images/icons/cart-plus.svg"/></a>
+                        <button class="btn btn-primary">Preview</button>
+                        <button class="js-add-to-cart btn btn-primary"><i class="js-add-to-cart bi bi-cart-plus"></i></button>
                     </div>
                     </div>
                 `;
