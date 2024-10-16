@@ -20,14 +20,16 @@ const paginate = (products) => {
            
             const div = document.createElement('div');
             div.classList.add('col');
+
+            const attrs = product.attributes;
         
             div.innerHTML = `
-                    <div class="js-prod card h-100">
-                    <img src="${product.photo[0]}" class="js-prod-photo card-img-top" alt="...">
+                    <div class="js-prod card h-100" id="${product.id}">
+                    <img src="${attrs.photo[0]}" class="js-prod-photo card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="js-prod-name card-title">${product.productName}</h5>
-                        <p class="js-prod-descr card-text">${product.description}</p>
-                        <p class="js-prod-price card-text">Price: ${product.price}</p>
+                        <h5 class="js-prod-name card-title">${attrs.productName}</h5>
+                        <p class="js-prod-descr card-text">${attrs.description}</p>
+                        <p class="js-prod-price card-text">Price: ${attrs.price}\$</p>
                     </div>
                     <div class="card-footer">
                         <a class="btn btn-primary">Preview</a>
