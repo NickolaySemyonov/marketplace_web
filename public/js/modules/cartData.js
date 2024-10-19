@@ -1,6 +1,9 @@
 const cartData = () => {
-    const cart = document.querySelector('.js-cart');
-    const productList = document.querySelector('.js-product-list');//cards container
+    const modalCartContent = document.querySelector('.js-cart-modal-content');//div of modal window content
+    const cart = modalCartContent.querySelector('.js-cart-prod-list');//div for cart products
+    const modalCartFooter = modalCartContent.querySelector('.modal-footer');//div - footer of modal window content
+    const quantityDisplay = document.querySelector('.js-cart-quantity');//span displaying quantity of items in cart
+    const productList = document.querySelector('.js-product-list');//div - cards container on the page
 
     var cartItems = []; // {id, count, info{}}
     
@@ -53,13 +56,14 @@ const cartData = () => {
    
     const renderProductInCart = (id, count, productInfo) => {
         const div = document.createElement('div');
-        div.classList.add('js-cart-item', 'd-flex');
+        div.classList.add('js-cart-item', 'd-flex' );
         div.innerHTML = `
             <img src="${productInfo.photo}" alt="no image" class="cart-item-image" width="100" height="100">
-            <div>
+           
+            <div class="flex-fill ps-3 pe-3">
                 <div class="cart-item-info">
-                    <h6 class="cart-item-name">${productInfo.name}</h6>
-                    <p class="cart-item-id">${id}</p>
+                    <h6 class="cart-item-name text-break">${productInfo.name}</h6>
+                    <p class="cart-item-id text-break">${id}</p>
                 <p class="cart-item-price">${productInfo.price}</p>
                 </div>
                 <div class="cart-item-quantity">
@@ -68,25 +72,41 @@ const cartData = () => {
                     <button class="btn btn-secondary btn-sm cart-item-inc">+</button>
                 </div>
             </div>
-            <button class="cart-item-remove btn btn-danger btn-sm " aria-label="Remove from cart">
+            <div class="flex-xs-fill">
+            <button class="cart-item-remove btn btn-danger btn-sm" aria-label="Remove from cart">
                 <i class="cart-item-remove bi bi-x-circle"></i>
             </button>
+            </div>
             
-              
         `;
         return div;
+    }
+    const displayCurrentQuantity =() => {
+        const result = cartItems.reduce((accumulator, item) => {
+            return accumulator + item.count;
+        }, 0); 
+
+        quantityDisplay.textContent = result < 100 ? result : "99+";
+        if(result === 0) quantityDisplay.classList.add('collapse');
+        else quantityDisplay.classList.remove('collapse');
     }
     const renderProductCart = () =>{
         //Load cart items saved in localstorage
         const parsed = JSON.parse(localStorage.getItem('cartItems'));
         cartItems = parsed!==null ? parsed: [];
 
-
+        displayCurrentQuantity();
         cart.innerHTML=``;
-        if(cartItems.length < 1) {cart.innerHTML=`<p>Корзина пуста</p>`; return;}
+        if(cartItems.length < 1) {
+            cart.innerHTML=`<p>Your cart is empty</p>`;
+            modalCartFooter.classList.add('collapse');
+            return;
+        }
+        modalCartFooter.classList.remove('collapse');
         cartItems.forEach(prod => {
             cart.append(renderProductInCart(prod.id, prod.count, prod.info));
         });
+
     }
     renderProductCart();
 
@@ -107,12 +127,12 @@ const cartData = () => {
         cartItems = cartItems.filter(item => item.id !== removedId); 
         updateLS();
     }
-
     const updateLS = () => {
         //upd localstorage
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }
 
+    
 };
 
 export {

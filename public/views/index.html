@@ -19,9 +19,9 @@
 
 
     <!-- Navbar -->
-    <div class="sticky-top bg-light">
+    <div class="sticky-top bg-light p-2">
       
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <nav class="navbar navbar-expand-md navbar-light bg-light ">
         <div class="container-fluid">
           <div><!--brand and categories button-->
             <a class="navbar-brand" href="#">OZON</a>
@@ -30,8 +30,9 @@
             </a>
           </div>
           <!-- Cart button-->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cartModal">
-            <i class="bi bi-cart"></i>
+          <button type="button" class=" btn btn-primary position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
+            Cart <i class="bi bi-cart"></i>
+            <span class="js-cart-quantity position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
           </button>
         </div>
       </nav>
@@ -40,18 +41,18 @@
     <!-- Cart modal -->
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable modal-lg modal-fullscreen-lg-down">
-        <div class="modal-content">
+        <div class="js-cart-modal-content modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="cartModalLabel">Корзина покупок</h5>
+            <h5 class="modal-title" id="cartModalLabel">Cart</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
           </div>
-          <div class="js-cart modal-body">
+          <div class="js-cart-prod-list modal-body">
             <!-- Здесь можно добавить содержимое корзины -->
             
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            <button type="button" class="btn btn-primary">Перейти к оплате</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Buy</button>
           </div>
         </div>
       </div>
@@ -63,7 +64,7 @@
     <!--  Main body container -->  
     <main class="container-fluid">
       <!-- Div for product cards inserted via js-->
-      <div class="js-product-list row row-cols-1 row-cols-sm-2 row-cols-md-3  row-cols-lg-4 row-cols-xl-6 g-2"></div>
+      <div class="js-product-list row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-2 p-2"></div>
      
       
       <nav class="js-pagination pagination">
