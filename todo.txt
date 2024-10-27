@@ -1,5 +1,5 @@
 [ ] header - sticky, tabs
-[ ] cart, localstorage
+[+] cart, localstorage
 [ ] main layout
 [ ] categories sidebar
 [ ] cards - carousel images, goods description, preview
