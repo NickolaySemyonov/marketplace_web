@@ -1,9 +1,9 @@
 
 const paginate = (products) => {
 
-    let productCount = 1; // max count of products to display on a page
-    let currentPage = 0; // current page by default
-    let linksBlockLength = 6; // max pagination links displayed in a block
+    //let productCount = 1; // max count of products to display on a page
+    //let currentPage = 0; // current page by default
+    //let linksBlockLength = 6; // max pagination links displayed in a block
     
     const productContainer = document.querySelector('.js-product-list');
     const pagination = document.querySelector('.js-pagination');//pagination nav
@@ -13,18 +13,31 @@ const paginate = (products) => {
     const btnSkipBackward = pagination.querySelector('.js-pagination-btn-skip-backward');
     const btnSkipForward = pagination.querySelector('.js-pagination-btn-skip-forward');
 
+    let paginationData={
+        
+        firstLinkIdx:0,
+        lastLinkIdx:0,
+        pagesCount:0,
+        currentPage:0,
+        linksBlockLength:6,
+        productsDisplayed:2
+    };
 
     const getPagesCount = () =>{
-        return Math.ceil(products.length / productCount);
+        return Math.ceil(products.length / paginationData.productsDisplayed);
     };
     
-    const renderProducts = (products, container, numberOfProductsDisplayed, pageNumber) => { // renders products container content
+    const renderProducts = (products, container, paginationData) => { // renders products container content
         container.innerHTML ="";//clear products container
 
-        const firstProductIndex = pageNumber* numberOfProductsDisplayed;   //determine index in "products" list of first product displayed in products container depending on current page
-        const lastProductIndex = Math.min(products.length,firstProductIndex + numberOfProductsDisplayed); //determine index in "products" list of last product displayed in products container
-        const productsOnPage = products.slice(firstProductIndex, lastProductIndex); //getting a slice of products to display on page
-        
+        // const firstProductIndex = pageNumber* numberOfProductsDisplayed;   //determine index in "products" list of first product displayed in products container depending on current page
+        // const lastProductIndex = Math.min(products.length,firstProductIndex + numberOfProductsDisplayed); //determine index in "products" list of last product displayed in products container
+        // const productsOnPage = products.slice(firstProductIndex, lastProductIndex); //getting a slice of products to display on page
+        const firstProductIndex = paginationData.currentPage* paginationData.productsDisplayed;
+        const lastProductIndex = Math.min(products.length,firstProductIndex + paginationData.productsDisplayed);
+        const productsOnPage= products.slice(firstProductIndex, lastProductIndex);
+
+
         productsOnPage.forEach(product => { //render each product and put it in product container
             const div = document.createElement('div');
             div.classList.add('col');
@@ -48,16 +61,16 @@ const paginate = (products) => {
     };
     
     const RenderPagination = () => { //renders pagination links block
-        const pagesCount = getPagesCount();
-        const firstLinkIdx = currentPage;
-        const lastLinkIdx = Math.min(firstLinkIdx + linksBlockLength-1, pagesCount - 1);
-        console.log(firstLinkIdx,lastLinkIdx)
+        paginationData.pagesCount = getPagesCount();
+        paginationData.firstLinkIdx = paginationData.currentPage;
+        paginationData.lastLinkIdx = Math.min(paginationData.firstLinkIdx + paginationData.linksBlockLength-1, paginationData.pagesCount - 1);
+        //console.log(firstLinkIdx,lastLinkIdx)
         linksBlock.innerHTML=``;
-        for (let i=firstLinkIdx; i<=lastLinkIdx; i++){
+        for (let i=paginationData.firstLinkIdx; i<=paginationData.lastLinkIdx; i++){
             const link = renderBtn(i);
             linksBlock.append(link);
         }
-        console.log('rendered')
+        console.log('rendered');
     };
 
     const renderBtn = (page) => { //renders link button and sets active if it leads to current page 
@@ -65,7 +78,7 @@ const paginate = (products) => {
         li.classList.add('page-item', 'page-link');
         li.textContent=page+1;
 
-        if(currentPage === page){
+        if(paginationData.currentPage === page){
             li.classList.add('active');
         }
         return li;
@@ -75,18 +88,43 @@ const paginate = (products) => {
     linksBlock.addEventListener('click', (event) =>{
         if(!event.target.closest('.page-item')) return;
         else {
-            currentPage = event.target.textContent-1; //get index of page
-            renderProducts(products, productContainer, productCount, currentPage);
-            let currentLi = linksBlock.querySelector('.page-item.active');
-            currentLi.classList.remove('active');
+            paginationData.currentPage = event.target.textContent-1; //get index of page
+            renderProducts(products, productContainer, paginationData);
+            let currentLink = linksBlock.querySelector('.page-item.active');
+            currentLink.classList.remove('active');
             event.target.classList.add('active');
         }
     });
 
-    renderProducts(products, productContainer, productCount, currentPage); //render products of default page
-    RenderPagination(products, productCount);
+    renderProducts(products, productContainer, paginationData); //render products of default page
+    RenderPagination();
    
 
+    const prevClick = () =>{
+        //curActiveLink = linksBlock.querySelector('.page-item.active');
+        
+        let tmp = paginationData.firstLinkIdx;
+        if(tmp===0)return;
+        paginationData.lastLinkIdx=tmp-1;
+        paginationData.firstLinkIdx= tmp-paginationData.linksBlockLength;
+        paginationData.currentPage=paginationData.firstLinkIdx;
+        RenderPagination();
+    }
+
+    const nextClick = () =>{
+        let tmp = paginationData.lastLinkIdx;
+        if(tmp===paginationData.pagesCount-1) return;
+        paginationData.lastLinkIdx=Math.min(tmp+paginationData.linksBlockLength, paginationData.pagesCount-1);
+        paginationData.firstLinkIdx= tmp+1;
+        paginationData.currentPage=paginationData.firstLinkIdx;
+
+        RenderPagination();
+    }
+
+
+
+    btnPrev.addEventListener('click',prevClick);
+    btnNext.addEventListener('click',nextClick);
     const liElements = linksBlock.querySelectorAll('.page-item');
     //click evt for prev-next btns
     const handlePagination = (event) => {
@@ -117,7 +155,7 @@ const paginate = (products) => {
         else if (currentPage < 1){
             currentPage = liElements.length;
         }
-        renderProducts(products, productContainer, productCount, currentPage);
+        renderProducts(products, productContainer, paginationData);
     };
     
     // const prevClick = () =>{
