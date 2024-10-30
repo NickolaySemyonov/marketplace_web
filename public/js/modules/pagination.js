@@ -1,4 +1,3 @@
-
 const paginate = (products) => {
 
     const productContainer = document.querySelector('.js-product-list');
@@ -106,7 +105,6 @@ const paginate = (products) => {
         }
     });
 
-    
     renderProducts(productContainer); //render products of default page
     renderPagination();
     updateNavBtns();
@@ -157,7 +155,6 @@ const paginate = (products) => {
     btnNext.addEventListener('click',nextClick);
     btnSkipBackward.addEventListener('click',skipBackwardClick);
     btnSkipForward.addEventListener('click',skipForwardClick);
-
 };
 
 export {
