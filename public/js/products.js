@@ -51,11 +51,16 @@ const products = [
         attributes: {
             category: "c1",
             subcategory: "sc1",
-            productName: "Mac",
-            description: "avava",
+            productName: "Ipad Pro",
+            description: "orginal",
             price: "200",
             photo: [
-                "images/salesAndDiscounts/mac.jpg"
+                "images/tablets/ipad_pro/1.png",
+                "images/tablets/ipad_pro/2.png",
+                "images/tablets/ipad_pro/3.png",
+                "images/tablets/ipad_pro/4.png",
+                "images/tablets/ipad_pro/5.png",
+                "images/tablets/ipad_pro/6.png"
             ]
         }
     },
@@ -64,11 +69,13 @@ const products = [
         attributes: {
             category: "c1",
             subcategory: "sc1",
-            productName: "SmartCleaner",
-            description: "clean",
+            productName: "Ipad Air",
+            description: "original",
             price: "100",
             photo: [
-                "images/salesAndDiscounts/smart.jpg"
+                "images/tablets/ipad_air/1.png",
+                "images/tablets/ipad_air/2.png",
+                "images/tablets/ipad_air/3.png"
             ]
         }
     },
@@ -77,11 +84,17 @@ const products = [
         attributes: {
             category: "c1",
             subcategory: "sc1",
-            productName: "SmartCleaner",
-            description: "clean",
-            price: "100",
+            productName: "Ipad Mini",
+            description: "original",
+            price: "140",
             photo: [
-                "images/salesAndDiscounts/smart.jpg"
+                "images/tablets/ipad_mini/1.png",
+                "images/tablets/ipad_mini/2.png",
+                "images/tablets/ipad_mini/3.png",
+                "images/tablets/ipad_mini/4.png",
+                "images/tablets/ipad_mini/5.png",
+                "images/tablets/ipad_mini/6.png",
+                "images/tablets/ipad_mini/7.png"
             ]
         }
     },
