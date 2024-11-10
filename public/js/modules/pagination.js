@@ -8,13 +8,15 @@ const paginate = (products) => {
     const btnSkipBackward = pagination.querySelector('.js-pagination-btn-skip-backward');//skip to first page button
     const btnSkipForward = pagination.querySelector('.js-pagination-btn-skip-forward');//skip to last page button
 
+    const productsDisplayedSelector = document.querySelectorAll('.js-prod-count-selector > .btn-check');// button group to select displayed count - 10,20,40 
+    
     let pData={ //pagination data
         firstLinkIdx:0,
         lastLinkIdx:0,
         pagesCount:0,
         currentPage:0,
         linksBlockLength:5,
-        productsDisplayed:4
+        productsDisplayed:10
     };
 
     const getPagesCount = () =>{
@@ -103,6 +105,23 @@ const paginate = (products) => {
             event.target.classList.add('active');
             updateNavBtns();
         }
+    });
+    productsDisplayedSelector.forEach(btn => {
+        btn.addEventListener('change',(event)=>{
+            if(!event.target.checked) return;
+            let count;
+            if(event.target.id==='display10') count=10;
+            else if (event.target.id==='display20') count=20
+            else count = 40;
+
+            pData.firstLinkIdx=0;
+            pData.currentPage=0;
+            pData.productsDisplayed=count; 
+           
+            renderProducts(productContainer); //render products of default page
+            renderPagination();
+            updateNavBtns();
+        });
     });
 
     renderProducts(productContainer); //render products of default page
