@@ -24,7 +24,7 @@
       <nav class="navbar navbar-expand-md navbar-light bg-light ">
         <div class="container-fluid">
           <div><!--brand and categories button-->
-            <a class="navbar-brand" href="#">OZON</a>
+            <a class="navbar-brand" href="/">OZON</a>
             <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
               Select category
             </a>
@@ -63,31 +63,7 @@
 
     <!-- Main body container -->  
     <main class="container-fluid">
-      <!-- Div for product cards inserted via js-->
-      <div class="js-displayed-products justify-content-center row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-2 p-2"></div>
-     
-      <!-- Pagination -->
-
-     
-
-      
-      <nav class="js-pagination pagination">
-        <button class="js-pagination-btn-skip-backward btn btn-primary"><i class="bi bi-skip-backward-fill"></i></button>
-        <button class="js-pagination-btn-prev btn btn-primary"><i class="bi bi-skip-start-fill"></i></button>
-        <ul class="js-pagination-list">
-        </ul>
-        <button class="js-pagination-btn-next btn btn-primary"><i class="bi bi-skip-end-fill"></i></button>
-        <button class="js-pagination-btn-skip-forward btn btn-primary"><i class="bi bi-skip-forward-fill"></i></button>
-      </nav>
-      <div class="js-prod-count-selector btn-group justify-content-center ms-2 mb-2" role="group">
-        <input type="radio" class="btn-check" name="btnradio" id="display10" autocomplete="off" checked>
-        <label class="btn btn-outline-primary" for="display10">10</label>
-        <input type="radio" class="btn-check" name="btnradio" id="display20" autocomplete="off">
-        <label class="btn btn-outline-primary" for="display20">20</label>
-        <input type="radio" class="btn-check" name="btnradio" id="display40" autocomplete="off">
-        <label class="btn btn-outline-primary" for="display40">40</label>
-      </div>  
-
+        <div class="js-displayed-products"></div>
     </main>
 
     <!-- Categories sidebar -->
@@ -184,7 +160,7 @@
 
 
     
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="../js/main.js"></script>
 
     <!--Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

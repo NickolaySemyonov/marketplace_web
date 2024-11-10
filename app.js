@@ -12,6 +12,12 @@ app.use(express.static(__dirname));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
+app.get('/index', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'index.html'));
+});
+app.get('/preview/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'preview.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

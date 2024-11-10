@@ -1,6 +1,6 @@
 const paginate = (products) => {
 
-    const productContainer = document.querySelector('.js-product-list');
+    const productContainer = document.querySelector('.js-displayed-products');
     const pagination = document.querySelector('.js-pagination');//pagination nav
     const linksBlock = pagination.querySelector('.js-pagination-list');//pagination links block
     const btnPrev= pagination.querySelector('.js-pagination-btn-prev');//prev button
@@ -43,7 +43,7 @@ const paginate = (products) => {
                         <p class="js-prod-price card-text">Price: ${attrs.price}\$</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary">Preview</button>
+                        <a href="/preview/${product.id}" class="btn btn-primary">Preview</a>
                         <button class="js-add-to-cart btn btn-primary"><i class="js-add-to-cart bi bi-cart-plus"></i></button>
                     </div>
                     </div>

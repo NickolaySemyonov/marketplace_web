@@ -1,9 +1,9 @@
-[ ] header - sticky, tabs
+[+] header - sticky, tabs
 [+] cart, localstorage
 [ ] main layout
 [ ] categories sidebar
 [ ] cards - carousel images, goods description, preview
-[ ] dynamic pagination 
+[+] dynamic pagination 
 [ ] footer
 [ ] page-up static button
 [ ] chat-bot

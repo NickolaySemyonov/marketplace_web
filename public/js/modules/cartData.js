@@ -3,12 +3,13 @@ const cartData = () => {
     const cart = modalCartContent.querySelector('.js-cart-prod-list');//div for cart products
     const modalCartFooter = modalCartContent.querySelector('.modal-footer');//div - footer of modal window content
     const quantityDisplay = document.querySelector('.js-cart-quantity');//span displaying quantity of items in cart
-    const productList = document.querySelector('.js-product-list');//div - cards container on the page
+    const productList = document.querySelector('.js-displayed-products');//div - cards container on the page
 
     var cartItems = []; // {id, count, info{}}
     
     //click evt listener
     const addProductToCart = () => {
+        if(productList)
         productList.addEventListener('click', (event) => {
             if(event.target.classList.contains('js-add-to-cart')){
                 const product = event.target.closest('.js-prod');
@@ -58,8 +59,9 @@ const cartData = () => {
         const div = document.createElement('div');
         div.classList.add('js-cart-item', 'd-flex' );
         div.innerHTML = `
-            <img src="${productInfo.photo}" alt="no image" class="cart-item-image" width="100" height="100">
-           
+            <a href="/preview/${id}">
+                <img src="${productInfo.photo}" alt="no image" class="cart-item-image" width="100" height="100">
+            </a>
             <div class="flex-fill ps-3 pe-3">
                 <div class="cart-item-info">
                     <h6 class="cart-item-name text-break">${productInfo.name}</h6>
