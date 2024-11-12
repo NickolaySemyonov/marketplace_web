@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
 app.get('/index', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
-app.get('/preview/:id', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'preview.html'));
+app.get('/product/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'product.html'));
 });
 
 app.listen(PORT, () => {

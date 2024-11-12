@@ -1,7 +1,18 @@
-const viewProduct = (product) =>{
-
+const previewProduct = (products) => {
+    //const previewModal = document.querySelector('.js-preview-modal-content');
+    const previewModalBody = document.querySelector('.js-preview-prod');
     const productContainer = document.querySelector('.js-displayed-products');
-    
+
+    if(previewModalBody){
+        productContainer.addEventListener('click', (event) => {
+            if(event.target.classList.contains('js-preview-btn')){
+                const id = event.target.closest('.js-prod').getAttribute('id');
+                const product= getProductById(id);
+                previewModalBody.innerHTML=``;
+                previewModalBody.append(renderProductView(product));
+            }
+        });
+    }
     const renderProductView = (product) => {
         const div = document.createElement('div');
         div.classList.add('col');
@@ -53,10 +64,12 @@ const viewProduct = (product) =>{
         `;
         return div;
     }
-
-    productContainer.append(renderProductView(product));
+    const getProductById = (id) => {
+        console.log(products.find(item => item.id === id));
+        return products.find(item => item.id === id);  
+    }
 }
 
-export {
-    viewProduct
-};
+export{
+    previewProduct
+}

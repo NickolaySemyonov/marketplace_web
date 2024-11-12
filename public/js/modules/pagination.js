@@ -42,8 +42,9 @@ const paginate = (products) => {
                         <p class="js-prod-descr card-text">${attrs.description}</p>
                         <p class="js-prod-price card-text">Price: ${attrs.price}\$</p>
                     </div>
-                    <div class="card-footer">
-                        <a href="/preview/${product.id}" class="btn btn-primary">Preview</a>
+                    <div class="card-footer"> 
+                        <button class="js-preview-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#previewModal">Preview</button>
+                        <a href="/product/${product.id}" class="btn btn-primary">Open product page</a>
                         <button class="js-add-to-cart btn btn-primary"><i class="js-add-to-cart bi bi-cart-plus"></i></button>
                     </div>
                     </div>

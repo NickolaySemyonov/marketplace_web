@@ -2,6 +2,7 @@ import products from "./products.js";
 import { paginate } from './modules/pagination.js';
 import { cartData } from "./modules/cartData.js";
 import { viewProduct } from "./modules/viewProduct.js";
+import { previewProduct } from "./modules/previewProduct.js";
 
 window.addEventListener('DOMContentLoaded', ()=>{
     actionsDependingOnPage();
@@ -18,13 +19,15 @@ const actionsDependingOnPage = () => {
         case '/':
             paginate(products);
             cartData();
+            previewProduct(products);
             break;
         case '/index'://same
             paginate(products);
             cartData();
+            previewProduct(products);
             break;
 
-        case currentPath.match(/^\/preview\/(\d+)$/)?.input:
+        case currentPath.match(/^\/product\/(\d+)$/)?.input:
             const id = currentPath.split('/')[2]; 
             //console.log(`Preview ID: ${id}`); 
             const shownProduct = getProductById(id);
