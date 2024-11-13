@@ -4,14 +4,14 @@ import { cartData } from "./modules/cartData.js";
 import { viewProduct } from "./modules/viewProduct.js";
 import { previewProduct } from "./modules/previewProduct.js";
 
+import { getProductById } from "./utilityFunctions.js";
+
+
 window.addEventListener('DOMContentLoaded', ()=>{
     actionsDependingOnPage();
 });
 
-const getProductById = (id) => {
-    console.log(products.find(item => item.id === id));
-    return products.find(item => item.id === id);  
-}
+
 
 const actionsDependingOnPage = () => { 
     const currentPath = window.location.pathname;
@@ -30,7 +30,7 @@ const actionsDependingOnPage = () => {
         case currentPath.match(/^\/product\/(\d+)$/)?.input:
             const id = currentPath.split('/')[2]; 
             //console.log(`Preview ID: ${id}`); 
-            const shownProduct = getProductById(id);
+            const shownProduct = getProductById(products,id);
             if (shownProduct===undefined) {window.location.href="/";}
             else {
                 viewProduct(shownProduct);

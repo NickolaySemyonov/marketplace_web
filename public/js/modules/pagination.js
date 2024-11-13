@@ -38,14 +38,16 @@ const paginate = (products) => {
                     <div class="js-prod card h-100" id="${product.id}">
                     <img src="${attrs.photo[0]}" class="js-prod-photo card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="js-prod-name card-title">${attrs.productName}</h5>
+                        <a href="/product/${product.id}"> 
+                            <h5 class="js-prod-name card-title">${attrs.productName}</h5> 
+                         </a>
                         <p class="js-prod-descr card-text">${attrs.description}</p>
                         <p class="js-prod-price card-text">Price: ${attrs.price}\$</p>
                     </div>
                     <div class="card-footer"> 
                         <button class="js-preview-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#previewModal">Preview</button>
-                        <a href="/product/${product.id}" class="btn btn-primary">Open product page</a>
                         <button class="js-add-to-cart btn btn-primary"><i class="js-add-to-cart bi bi-cart-plus"></i></button>
+                        
                     </div>
                     </div>
                 `;

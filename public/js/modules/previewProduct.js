@@ -1,3 +1,4 @@
+import { getProductById } from "../utilityFunctions.js";
 const previewProduct = (products) => {
     //const previewModal = document.querySelector('.js-preview-modal-content');
     const previewModalBody = document.querySelector('.js-preview-prod');
@@ -7,7 +8,7 @@ const previewProduct = (products) => {
         productContainer.addEventListener('click', (event) => {
             if(event.target.classList.contains('js-preview-btn')){
                 const id = event.target.closest('.js-prod').getAttribute('id');
-                const product= getProductById(id);
+                const product= getProductById(products, id);
                 previewModalBody.innerHTML=``;
                 previewModalBody.append(renderProductView(product));
             }
@@ -63,10 +64,6 @@ const previewProduct = (products) => {
             </button>
         `;
         return div;
-    }
-    const getProductById = (id) => {
-        console.log(products.find(item => item.id === id));
-        return products.find(item => item.id === id);  
     }
 }
 
