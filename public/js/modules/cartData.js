@@ -4,6 +4,8 @@ const cartData = () => {
     const modalCartFooter = modalCartContent.querySelector('.modal-footer');//div - footer of modal window content
     const quantityDisplay = document.querySelector('.js-cart-quantity');//span displaying quantity of items in cart
     const productList = document.querySelector('.js-displayed-products');//div - cards container on the page
+    const previewModalBody = document.querySelector('.js-preview-prod');
+
 
     var cartItems = []; // {id, count, info{}}
     
@@ -11,6 +13,29 @@ const cartData = () => {
     const addProductToCart = () => {
         if(productList)
         productList.addEventListener('click', (event) => {
+            if(event.target.classList.contains('js-add-to-cart')){
+                const product = event.target.closest('.js-prod');
+                const id = product.getAttribute('id');
+
+                const productInfo = {};
+                productInfo.photo = product.querySelector('.js-prod-photo').src;
+                productInfo.name =  product.querySelector('.js-prod-name').textContent;
+                productInfo.description = product.querySelector('.js-prod-descr').textContent;
+                productInfo.price = product.querySelector('.js-prod-price').textContent;
+
+                const existingItem = cartItems.find(item => item.id === id);
+                
+                if (existingItem !== undefined) updateCartItemCount(existingItem,existingItem.count+1);
+                else {
+                    cartItems.push({id:id, count:1, info:productInfo});
+                    updateLS();
+                }
+                //console.log(cartItems);
+                renderProductCart();
+            }
+        });
+        if(previewModalBody)
+        previewModalBody.addEventListener('click', (event) => {
             if(event.target.classList.contains('js-add-to-cart')){
                 const product = event.target.closest('.js-prod');
                 const id = product.getAttribute('id');

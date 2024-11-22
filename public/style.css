@@ -34,10 +34,32 @@
 }
   
 .cart-item-remove {
-    
-    
     height: 40pt;
     width: 40pt;
     padding: 0;
    
+}
+
+
+.carousel {
+    height: 400px; /* Fixed height */
+    margin-bottom: 20pt;
+}
+.carousel-item {
+    height: 400px; /* Match the height of the carousel */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+.carousel-item img {
+    height: 100%; /* Fill the height of the carousel */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Contain to prevent cropping */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color:  rgba(13, 110, 253, 0.15);
+    border-radius: 25%; 
+    box-shadow: 0 2px 5px  rgba(13, 110, 253, 0.25); 
 }
