@@ -40,7 +40,7 @@ const paginate = (products) => {
                     <div class="card-body">
                         <a href="/product/${product.id}"> 
                             <h5 class="js-prod-name card-title">${attrs.productName}</h5> 
-                         </a>
+                        </a>
                         <p class="js-prod-descr card-text">${attrs.description}</p>
                         <p class="js-prod-price card-text">Price: ${attrs.price}\$</p>
                     </div>

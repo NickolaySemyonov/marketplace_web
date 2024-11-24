@@ -1,4 +1,6 @@
 import { getProductById } from "../utilityFunctions.js";
+import { renderTable } from "../utilityFunctions.js";
+
 const previewProduct = (products) => {
     //const previewModal = document.querySelector('.js-preview-modal-content');
     const previewModalBody = document.querySelector('.js-preview-prod');
@@ -20,18 +22,21 @@ const previewProduct = (products) => {
         const attrs= product.attributes;
         div.append(renderCarousel(product));
         div.innerHTML+=`
-              <div class="js-prod card h-100" id="${product.id}">
-              <img src="../${attrs.photo[0]}" class="js-prod-photo card-img-top collapse" alt="...">
-              <div class="card-body">
-                  <h5 class="js-prod-name card-title">${attrs.productName}</h5>
-                  <p class="js-prod-descr card-text">${attrs.description}</p>
-                  <p class="js-prod-price card-text">Price: ${attrs.price}\$</p>
-              </div>
-              <div class="card-footer">
-                  <button class="js-add-to-cart btn btn-primary"><i class="js-add-to-cart bi bi-cart-plus"></i></button>
-              </div>
-              </div>
+                <div class="js-prod card h-100" id="${product.id}">
+                <img src="../${attrs.photo[0]}" class="js-prod-photo card-img-top collapse" alt="...">
+                <div class="card-body">  
+                    <a href="/product/${product.id}"> 
+                        <h5 class="js-prod-name card-title">${attrs.productName}</h5> 
+                    </a>
+                    <p class="js-prod-descr card-text">${attrs.description}</p>
+                    <p class="js-prod-price card-text">Price: ${attrs.price}\$</p>
+                    <hr>
+                    <button class="js-add-to-cart btn btn-primary">Add to cart <i class="js-add-to-cart bi bi-cart-plus"></i></button>
+                </div>
+                </div>
           `;
+        const details = product.details;
+        div.append(renderTable(details,"Device Information"));
         return div;
     };
     const renderCarousel = (product) => {//renders carousel from product image list

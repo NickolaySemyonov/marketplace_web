@@ -1,3 +1,4 @@
+import { renderTable } from "../utilityFunctions.js";
 const viewProduct = (product) =>{
 
     const productContainer = document.querySelector('.js-displayed-products');
@@ -14,14 +15,18 @@ const viewProduct = (product) =>{
                   <h5 class="js-prod-name card-title">${attrs.productName}</h5>
                   <p class="js-prod-descr card-text">${attrs.description}</p>
                   <p class="js-prod-price card-text">Price: ${attrs.price}\$</p>
-              </div>
-              <div class="card-footer">
-                  <button class="js-add-to-cart btn btn-primary"><i class="js-add-to-cart bi bi-cart-plus"></i></button>
+                  <hr>
+                  <button class="js-add-to-cart btn btn-primary">Add to cart <i class="js-add-to-cart bi bi-cart-plus"></i></button>
               </div>
               </div>
           `;
+
+        const details = product.details;
+        div.append(renderTable(details,"Device Information"));
         return div;
     };
+
+
     const renderCarousel = (product) => {//renders carousel from product image list
         const images = product.attributes.photo;
 

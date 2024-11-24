@@ -85,7 +85,7 @@ const cartData = () => {
         div.classList.add('js-cart-item', 'd-flex' );
         div.innerHTML = `
             <a href="/product/${id}">
-                <img src="${productInfo.photo}" alt="no image" class="cart-item-image" width="100" height="100">
+                <img src="${productInfo.photo}" alt="no image" class="cart-item-image">
             </a>
             <div class="flex-fill ps-3 pe-3">
                 <div class="cart-item-info">
