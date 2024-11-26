@@ -68,3 +68,15 @@
     border-radius: 25%; 
     box-shadow: 0 2px 5px  rgba(13, 110, 253, 0.25); 
 }
+
+
+.accordion-body {
+    padding-left: 0;
+    padding: 0;
+}
+.list-group-item{
+    padding-left: 40px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: dodgerblue;
+}

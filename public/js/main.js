@@ -1,9 +1,10 @@
 import products from "./products.js";
+import categories from "./categories.js"
 import { paginate } from './modules/pagination.js';
 import { cartData } from "./modules/cartData.js";
 import { viewProduct } from "./modules/viewProduct.js";
 import { previewProduct } from "./modules/previewProduct.js";
-
+import { categoriesData } from "./modules/categoriesData.js";
 import { getProductById } from "./utilityFunctions.js";
 
 
@@ -20,11 +21,13 @@ const actionsDependingOnPage = () => {
             paginate(products);
             cartData();
             previewProduct(products);
+            categoriesData(categories);
             break;
         case '/index'://same
             paginate(products);
             cartData();
             previewProduct(products);
+            categoriesData(categories);
             break;
 
         case currentPath.match(/^\/product\/(\d+)$/)?.input:
@@ -35,6 +38,7 @@ const actionsDependingOnPage = () => {
             else {
                 viewProduct(shownProduct);
                 cartData();
+                categoriesData(categories);
             }
             break;
 
