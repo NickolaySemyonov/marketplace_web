@@ -5,8 +5,7 @@ import { cartData } from "./modules/cartData.js";
 import { viewProduct } from "./modules/viewProduct.js";
 import { previewProduct } from "./modules/previewProduct.js";
 import { categoriesData } from "./modules/categoriesData.js";
-import { getProductById } from "./utilityFunctions.js";
-import { filterProductsByCategory } from "./utilityFunctions.js";
+import { getProductById, filterProductsByCategory, showBackToTopBtn} from "./utilityFunctions.js";
 
 
 window.addEventListener('DOMContentLoaded', ()=>{
@@ -29,6 +28,7 @@ const actionsDependingOnPage = () => {
             } 
             else paginate(products);
 
+            showBackToTopBtn();
             previewProduct(products);
             cartData();
             categoriesData(categories);

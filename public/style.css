@@ -80,3 +80,17 @@
     text-underline-offset: 2px;
     text-decoration-color: dodgerblue;
 }
+
+.backToTop{
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    z-index: 1000;
+    display: none;
+}

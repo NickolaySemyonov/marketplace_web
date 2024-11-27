@@ -142,6 +142,7 @@ const paginate = (products) => {
 
         renderPagination();
         updateNavBtns();
+        renderProducts(productContainer);
     }
 
     const nextClick = () =>{
@@ -156,6 +157,7 @@ const paginate = (products) => {
     
         renderPagination();
         updateNavBtns();
+        renderProducts(productContainer);
     }
 
     const skipBackwardClick = () => {
@@ -163,6 +165,7 @@ const paginate = (products) => {
         pData.currentPage=0;
         renderPagination();
         updateNavBtns();
+        renderProducts(productContainer);
     }
 
     const skipForwardClick = () => {
@@ -171,6 +174,7 @@ const paginate = (products) => {
         pData.currentPage=pData.pagesCount-1;
         renderPagination();
         updateNavBtns();
+        renderProducts(productContainer);
     }
 
     btnPrev.addEventListener('click',prevClick);

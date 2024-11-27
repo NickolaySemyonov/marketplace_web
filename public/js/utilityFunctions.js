@@ -78,8 +78,19 @@ const renderTable = (data, headerText) => {
     return table;
 }
 
+const showBackToTopBtn = () => {
+    const backToTopButton = document.getElementById("backToTop");
+
+    window.onscroll = function() {
+    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+        backToTopButton.style.display = "flex";
+    } else 
+        backToTopButton.style.display = "none";
+  };
+}
 export {
     getProductById,
     filterProductsByCategory,
     renderTable,
+    showBackToTopBtn
 }
