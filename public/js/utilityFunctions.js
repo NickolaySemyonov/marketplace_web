@@ -2,6 +2,35 @@ const getProductById = (products, id) => {
     console.log(products.find(item => item.id === id));
     return products.find(item => item.id === id);  
 }
+
+const filterProductsByCategory = (products,categories, categoryName) => {
+    const category = getCategoryByName(categories, categoryName);
+    const subcategories = getAllSubcategories(category);
+    return products.filter(product => subcategories.includes(product.category));
+    //return products.filter(product => product.category.toLowerCase() === categoryName.toLowerCase());
+}
+const getAllSubcategories = (category) => {
+    let subcategories = [category.name.toLowerCase()];
+    if (category.children!==null) {
+        category.children.forEach(child => {
+            subcategories = subcategories.concat(getAllSubcategories(child));//concat combines arrays
+        });
+    }
+    return subcategories; 
+};
+const getCategoryByName = (categories, name) => {
+    for (const category of categories) {
+        if (category.name === name) {
+            return category; 
+        }
+        if (category.children!==null) {
+            const found = getCategoryByName(category.children, name);
+            if (found!==null) return found;
+        }
+    }
+    return null; // category is not found
+};
+
 const renderTable = (data, headerText) => {
 
     // table element
@@ -51,5 +80,6 @@ const renderTable = (data, headerText) => {
 
 export {
     getProductById,
-    renderTable
+    filterProductsByCategory,
+    renderTable,
 }

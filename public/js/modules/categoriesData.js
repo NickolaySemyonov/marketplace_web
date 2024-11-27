@@ -3,7 +3,6 @@ const categoriesData = (categories) => {
 
     const renderAccordion = (category, parentId) => {
 
-
         //the accordion itself
         const accordionDiv = document.createElement('div');
         accordionDiv.classList.add('accordion', 'accordion-item');
@@ -19,7 +18,9 @@ const categoriesData = (categories) => {
                 data-bs-target="#collapse_for_${category.name}" 
                 aria-expanded="false" 
                 aria-controls="collapse_for_${category.name}">
-                ${category.name.replace('_',' ')}
+                <span onclick="window.location.href='/?category=${category.name}'">
+                    ${category.name.replace('_', ' ')}
+                </span>
             </button>
         `;
 

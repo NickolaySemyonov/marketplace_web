@@ -1,7 +1,7 @@
 const products = [
     {
         id: "000001",
-        category: "tablets",
+        category: "apple_tablets",
         attributes: {
             productName: "iPad Pro",
             description: "orginal",
@@ -29,7 +29,7 @@ const products = [
     },
     {
         id:"000002",
-        category: "tablets",
+        category: "apple_tablets",
         attributes: {
             productName: "iPad Air",
             description: "original",
@@ -54,7 +54,7 @@ const products = [
     },
     {
         id:"000003",
-        category: "tablets",
+        category: "apple_tablets",
         attributes: {
             productName: "iPad Mini",
             description: "original",
@@ -84,7 +84,7 @@ const products = [
     },
     {
         id:"000004",
-        category: "laptops",
+        category: "apple_laptops",
         attributes: {
             productName: "macBook Pro",
             description: "original",
@@ -111,7 +111,7 @@ const products = [
     },
     {
         id: "000005",
-        category: "laptops",
+        category: "apple_laptops",
         attributes: {
             productName: "macBook Air",
             description: "original",
@@ -139,7 +139,7 @@ const products = [
     },
     {
         id: "000006",
-        category: "laptops",
+        category: "msi_laptops",
         attributes: {
             productName: "MSI GF63 Thin",
             description: "original",
@@ -167,7 +167,7 @@ const products = [
     },
     {
         id:"000007",
-        category: "laptops",
+        category: "msi_laptops",
         attributes: {
             productName: "MSI GF66 Katana",
             description: "clean",
@@ -194,7 +194,7 @@ const products = [
     },
     {
         id:"000008",
-        category: "phones",
+        category: "apple_smartphones",
         attributes: {
             productName: "iPhone 15",
             description: "original",
@@ -221,7 +221,7 @@ const products = [
     },
     {
         id: "000009",
-        category: "phones",
+        category: "apple_smartphones",
         attributes: {
             productName: "iPhone 13",
             description: "original",
@@ -249,7 +249,7 @@ const products = [
     },
     {
         id:"000010",
-        category: "phones",
+        category: "samsung_smartphones",
         attributes: {
             productName: "Samsung Galaxy Note20 Ultra",
             description: "original",
@@ -405,7 +405,7 @@ const products = [
     },
     {
         id: "000021",
-        category: "tablets",
+        category: "apple_tablets",
         attributes: {
             productName: "Ipad Pro",
             description: "orginal",
@@ -423,7 +423,7 @@ const products = [
     },
     {
         id:"000022",
-        category: "tablets",
+        category: "apple_tablets",
         attributes: {
             productName: "Ipad Air",
             description: "original",
@@ -438,7 +438,7 @@ const products = [
     },
     {
         id:"000023",
-        category: "tablets",
+        category: "apple_tablets",
         attributes: {
             productName: "Ipad Mini",
             description: "original",

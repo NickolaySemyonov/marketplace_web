@@ -6,6 +6,7 @@ import { viewProduct } from "./modules/viewProduct.js";
 import { previewProduct } from "./modules/previewProduct.js";
 import { categoriesData } from "./modules/categoriesData.js";
 import { getProductById } from "./utilityFunctions.js";
+import { filterProductsByCategory } from "./utilityFunctions.js";
 
 
 window.addEventListener('DOMContentLoaded', ()=>{
@@ -13,28 +14,30 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 
 
-
 const actionsDependingOnPage = () => { 
     const currentPath = window.location.pathname;
+    const urlParams = new URLSearchParams(window.location.search);
+
     switch(currentPath){
         case '/':
-            paginate(products);
-            cartData();
+        case '/index':
+            if (urlParams.has('category')) {
+                const categoryName = urlParams.get('category'); 
+                const filteredProducts = filterProductsByCategory(products,categories, categoryName);
+                if(filteredProducts.length!==0) paginate(filteredProducts);
+                else window.location.href='/';
+            } 
+            else paginate(products);
+
             previewProduct(products);
-            categoriesData(categories);
-            break;
-        case '/index'://same
-            paginate(products);
             cartData();
-            previewProduct(products);
             categoriesData(categories);
             break;
 
         case currentPath.match(/^\/product\/(\d+)$/)?.input:
             const id = currentPath.split('/')[2]; 
-            //console.log(`Preview ID: ${id}`); 
             const shownProduct = getProductById(products,id);
-            if (shownProduct===undefined) {window.location.href="/";}
+            if (shownProduct===undefined) {window.location.href='/';}
             else {
                 viewProduct(shownProduct);
                 cartData();

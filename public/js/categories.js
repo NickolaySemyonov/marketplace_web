@@ -6,7 +6,7 @@ const categories = [
                 name:"Tablets",
                 children:[
                     {
-                        name:"iPads",
+                        name:"Apple_tablets",
                         children:null
                     }
                 ]
@@ -18,23 +18,21 @@ const categories = [
                         name:"MSI_laptops",
                         children:null
                     },
-                    
                     {
-                        name:"macBooks",
+                        name:"Apple_laptops",
                         children:null
                     }
                 ]
             },
             {
-                name:"Phones",
+                name:"Smartphones",
                 children:[
                     {
-                        name:"iPhones",
+                        name:"Apple_smartphones",
                         children:null
                     },
-                    
                     {
-                        name:"Samsung_phones",
+                        name:"Samsung_smartphones",
                         children:null
                     }
                 ]
